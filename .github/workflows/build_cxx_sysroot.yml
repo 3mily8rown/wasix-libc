@@ -75,6 +75,9 @@ jobs:
           cmake --build . --target install --parallel 4
           llvm-ranlib /opt/wasix-sysroot/lib/wasm32-wasi/libclang_rt.builtins-wasm32.a
 
+      - name: Check Wasmer version
+        run: wasmer -V
+
       - name: Run WASIX tests
         run: |
           export CLANG_VERSION=$(clang --version | grep -i "clang version" | sed -n 's/.*version \([0-9.]*\).*/\1/p')
